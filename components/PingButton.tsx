@@ -9,6 +9,7 @@ const DATA_ACCOUNT_PUBKEY = `Ah9K7dQ8EHaZqcAsgBW8w37yN2eAy3koFmUn4x3CJtod`
 export const PingButton: FC = () => {
 	const { connection } = useConnection();
 	const { publicKey, sendTransaction } = useWallet();
+	console.log(`Your wallet address: ${publicKey}`);
 
 	const onClick = () => {
 		if (!connection || !publicKey) { return }
@@ -29,7 +30,7 @@ export const PingButton: FC = () => {
 		});
 
 		transaction.add(instruction)
-		sendTransaction(transaction, connection).then(sig => {
+		sendTransaction(transaction, connection).then((sig) => {
 			console.log(sig)
 		})
 	}
